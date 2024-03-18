@@ -10,15 +10,12 @@ GitHub:
 Date:
 July 19, 2023
 """
-import os.path
-import sys
-sys.path.append("backend")
 import time
 import numpy as np
-from backend.printing_fxns import print_colored
-from backend.simulation_functions import *
-from statistics.random_samples_fxns import generate_noise_samples
-from experiment_setup import drone_exp_setup
+from .backend.printing_fxns import print_colored
+from .backend.simulation_functions import *
+from .statistics.random_samples_fxns import generate_noise_samples
+from dr_cvar_safety_filtering_ros.experiment_setup import drone_exp_setup
 import pickle
 
 

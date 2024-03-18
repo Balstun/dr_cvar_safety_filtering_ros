@@ -17,7 +17,7 @@ import cvxpy as cp
 import numpy as np
 from matplotlib import pyplot as plt
 
-from dynamics import DoubleIntegrator
+from .dynamics import DoubleIntegrator
 
 
 class MPCReferenceTrajectory:

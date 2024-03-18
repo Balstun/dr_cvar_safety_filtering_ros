@@ -15,7 +15,7 @@ from scipy.stats import norm
 from scipy.stats import expon
 import matplotlib.pyplot as plt
 import os
-from statistics.random_samples_fxns import generate_noise_samples as generate_raw_samples
+from .random_samples_fxns import generate_noise_samples as generate_raw_samples
 
 
 def get_true_mean(loc, scale, dist):
