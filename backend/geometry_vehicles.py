@@ -42,6 +42,41 @@ class CircularVehicle(VehicleGeometry):
         return patch.Circle(self.center, self.radius, facecolor=color, alpha=alpha)
 
 
+class EllipsoidVehicle(VehicleGeometry):
+    """
+    2D Ellipsoid Vehicle Geometry
+    """
+
+    def __init__(self, center, width, height, angle):
+        super().__init__()
+        self.center = center
+        self.width = width
+        self.height = height
+        self.angle = angle
+
+    def get_patch(self, color='tab:blue', alpha=0.3):
+        return patch.Ellipse(self.center, self.width, self.height, self.angle,
+                             facecolor=color, alpha=alpha)
+
+
+class RectangularVehicle(VehicleGeometry):
+    """
+    2D Rectangular Vehicle Geometry
+    """
+
+    def __init__(self, center, width, height, angle, rotation_point):
+        super().__init__()
+        self.center = center
+        self.width = width
+        self.height = height
+        self.angle = angle
+        self.rotation_point = rotation_point
+
+    def get_patch(self, color='tab:blue', alpha=0.3):
+        return patch.Rectangle(self.center, self.width, self.height, self.angle,
+                               rotation_point=self.rotation_point, facecolor=color, alpha=alpha)
+
+
 # #################################################################################################################### #
 # ################################################## Test Functions ################################################## #
 # #################################################################################################################### #

@@ -13,8 +13,8 @@ July 19, 2023
 import numpy as np
 from matplotlib import pyplot as plt
 
-from .dynamics import SingleIntegrator, DoubleIntegrator
-from .geometry_vehicles import CircularVehicle
+from dynamics import SingleIntegrator, DoubleIntegrator, KinematicBicycle
+from geometry_vehicles import CircularVehicle, RectangularVehicle
 
 
 class CircularSingleIntegrator(SingleIntegrator, CircularVehicle):
@@ -36,6 +36,17 @@ class CircularDoubleIntegrator(DoubleIntegrator, CircularVehicle):
         self.center = self.get_pos
         return super().get_patch(color, alpha)
 
+
+class RectangularKinematicBicycle(KinematicBicycle, RectangularVehicle):
+    def __init__(self, x0, dt, t0, lf, lr, max_steer, width, height, angle, rotation_point):
+        super().__init__(x0, dt, t0, lf, lr, max_steer)
+        RectangularVehicle.__init__(self, self.get_pos, width, height, angle, rotation_point)
+
+    def get_patch(self, color='tab:blue', alpha=0.3):
+        self.center = self.get_pos
+        return super().get_patch(self.center, self.width, self.height, self.angle,
+                                 rotation_point=self.rotation_point, facecolor=color,
+                                 alpha=alpha)
 
 # #################################################################################################################### #
 # ################################################## Test Functions ################################################## #

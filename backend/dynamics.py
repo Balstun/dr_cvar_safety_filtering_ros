@@ -179,6 +179,59 @@ class DoubleIntegrator(DTVehicleDynamics):
         return self.Cv @ self.x
 
 
+class KinematicBicycle(DTVehicleDynamics):
+    """
+    2D Kinematic Bicycle dynamics class
+    """
+
+    def __init__(self, x0, dt, t0, lf, lr, max_steer):
+        """
+
+        """
+        A, B, C = np.eye(5), np.zeros((5, 2)), np.diag([1, 1, 0, 0, 0])
+        super().__init__(A, B, C, x0, dt, t0)
+        self.Cv = np.diag([0, 0, 0, 1, 0])
+
+        self.lf, self.lr = lf, lr
+        self.wheelbase = lf + lr
+        self.max_steer = max_steer
+
+    def _direct_state_update(self, x, u):
+        return np.array(
+            [u[0] * np.cos(x[2]),
+             u[0] * np.sin(x[2]),
+             u[0] * np.tan(u[1]) / self.wheelbase])
+
+    def _state_update(self, x, u):
+        A, B = self._linearize_dynamics(x, u)
+        return A @ x + B @ u
+
+    def _linearize_dynamics(self, x, u):
+        A = np.array([
+            [1, 0, -self.dt * u[0] * np.sin(x[2]), self.dt * np.cos(x[2]), 0],
+            [0, 1, -self.dt * u[0] * np.cos(x[2]), self.dt * np.sin(x[2]), 0],
+            [0, 0, 1, 0, (self.dt * u[0]) / self.wheelbase],
+            [0, 0, 0, 1, 0],
+            [0, 0, 0, 0, 1]
+        ])
+        B = np.array([
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [1, 0],
+            [0, 1],
+        ])
+        return A, B
+
+    @property
+    def get_pos(self):
+        return self.C @ self.x
+
+    @property
+    def get_vel(self):
+        return self.Cv @ self.x
+
+
 # #################################################################################################################### #
 # ################################################## Test Functions ################################################## #
 # #################################################################################################################### #
@@ -214,9 +267,16 @@ def test_double_integrator():
     test_model(model, u)
 
 
+def test_kinematic_bicycle():
+    model = KinematicBicycle(x0=np.array([2, 0, 0, 0, 0]), dt=0.1, t0=0, lf=0.5, lr=0.5, max_steer=np.pi/4)
+    u = np.array(np.array([0.5, 0.1]))
+    test_model(model, u)
+
+
 def main():
     test_single_integrator()
     test_double_integrator()
+    test_kinematic_bicycle()
 
 
 if __name__ == "__main__":
