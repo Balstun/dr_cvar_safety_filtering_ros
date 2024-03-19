@@ -95,5 +95,20 @@ def test_circular_vehicle():
     plt.show()
 
 
+def test_all_vehicles():
+    veh0 = CircularVehicle([0, 0], 0.5)
+    veh1 = EllipsoidVehicle([1, 0], 0.5, 1.0, 45)
+    veh2 = RectangularVehicle([0, 2], 1, 2, 90, 'center')
+
+    fig, axs = plt.subplots()
+    axs.add_patch(veh0.get_patch('tab:blue', alpha=0.5))
+    axs.add_patch(veh1.get_patch('tab:green', alpha=0.3))
+    axs.add_patch(veh2.get_patch('tab:red', alpha=1.0))
+    plt.scatter([veh0.center[0], veh1.center[0], veh2.center[0]],
+                [veh0.center[1], veh1.center[1], veh2.center[1]], color='k', marker='x')
+    axs.axis('equal')
+    plt.show()
+
+
 if __name__ == "__main__":
     test_circular_vehicle()

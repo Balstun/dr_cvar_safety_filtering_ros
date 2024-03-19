@@ -44,9 +44,7 @@ class RectangularKinematicBicycle(KinematicBicycle, RectangularVehicle):
 
     def get_patch(self, color='tab:blue', alpha=0.3):
         self.center = self.get_pos
-        return super().get_patch(self.center, self.width, self.height, self.angle,
-                                 rotation_point=self.rotation_point, facecolor=color,
-                                 alpha=alpha)
+        return super().get_patch(color, alpha)
 
 # #################################################################################################################### #
 # ################################################## Test Functions ################################################## #
@@ -87,9 +85,17 @@ def test_circular_double_integrator():
     test_model(geom_model, u)
 
 
+def test_rectangular_kinematic_bicycle():
+    geom_model = RectangularKinematicBicycle(x0=np.array([2, 0, 0, 0, 0]), dt=0.1, t0=0, lf=0.5, lr=0.5, max_steer=np.pi/4,
+                                             width=0.5, height=1.0, angle=90, rotation_point='center')
+    u = np.array([1, 0.1])
+    test_model(geom_model, u)
+
+
 def main():
     test_circular_single_integrator()
     test_circular_double_integrator()
+    test_rectangular_kinematic_bicycle()
 
 
 if __name__ == "__main__":
