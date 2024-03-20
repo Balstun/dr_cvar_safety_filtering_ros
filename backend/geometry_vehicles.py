@@ -111,4 +111,4 @@ def test_all_vehicles():
 
 
 if __name__ == "__main__":
-    test_circular_vehicle()
+    test_all_vehicles()
