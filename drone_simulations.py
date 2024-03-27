@@ -12,9 +12,9 @@ July 19, 2023
 """
 import time
 import numpy as np
-from .backend.printing_fxns import print_colored
-from .backend.simulation_functions import *
-from .statistics.random_samples_fxns import generate_noise_samples
+from backend.printing_fxns import print_colored
+from backend.simulation_functions import *
+from statistics.random_samples_fxns import generate_noise_samples
 from dr_cvar_safety_filtering_ros.experiment_setup import drone_exp_setup
 import pickle
 

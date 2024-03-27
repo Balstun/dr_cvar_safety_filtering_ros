@@ -13,7 +13,7 @@ July 19, 2023
 import types
 import time
 import cvxpy as cp
-from .dynamics import *
+from backend.dynamics import *
 
 
 class MPCFilter:

@@ -15,8 +15,8 @@ import os
 import numpy as np
 from matplotlib import pyplot as plt
 
-from .printing_fxns import print_colored
-from ..paper_figures import MAIN_TITLE, SUBPLOT_TITLE, LEGEND, XYAXIS
+from backend.printing_fxns import print_colored
+from dr_cvar_safety_filtering_ros.paper_figures import MAIN_TITLE, SUBPLOT_TITLE, LEGEND, XYAXIS
 import pickle
 
 

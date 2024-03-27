@@ -17,8 +17,8 @@ from matplotlib import pyplot as plt
 from matplotlib.lines import Line2D
 from matplotlib.patches import Circle, FancyArrowPatch
 
-from .backend.safe_halfspaces import CVaRHalfspace, DRCVaRHalfspace, MeanHalfspace
-from .statistics.random_samples_fxns import generate_noise_samples
+from backend.safe_halfspaces import CVaRHalfspace, DRCVaRHalfspace, MeanHalfspace
+from statistics.random_samples_fxns import generate_noise_samples
 
 # font sizes
 MAIN_TITLE = 22

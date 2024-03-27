@@ -13,8 +13,8 @@ July 19, 2023
 import numpy as np
 from matplotlib import pyplot as plt
 
-from dynamics import SingleIntegrator, DoubleIntegrator, KinematicBicycle
-from geometry_vehicles import CircularVehicle, RectangularVehicle
+from backend.dynamics import SingleIntegrator, DoubleIntegrator, KinematicBicycle
+from backend.geometry_vehicles import CircularVehicle, RectangularVehicle
 
 
 class CircularSingleIntegrator(SingleIntegrator, CircularVehicle):

@@ -21,8 +21,8 @@ import numpy as np
 import cvxpy as cp
 import polytope
 from matplotlib import pyplot as plt
-from ..statistics.random_samples_fxns import generate_noise_samples
-from ..statistics.stat_basics import get_empirical_cvar, get_empirical_drcvar
+from statistics.random_samples_fxns import generate_noise_samples
+from statistics.stat_basics import get_empirical_cvar, get_empirical_drcvar
 
 
 class Halfspace:

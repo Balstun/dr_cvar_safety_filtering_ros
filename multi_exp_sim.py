@@ -1,4 +1,4 @@
-from drone_simulations import reach_avoid
+from dr_cvar_safety_filtering_ros.drone_simulations import reach_avoid
 from backend.simulation_functions import *
 
 # set the value of the chosen setting to True to generate the Monte Carlo simulations
