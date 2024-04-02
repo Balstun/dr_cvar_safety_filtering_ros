@@ -1,6 +1,6 @@
 from backend.dynamic_vehicles import RectangularKinematicBicycle
 
-def distance_to_collsion(ego_veh: RectangularKinematicBicycle, obst_veh: RectangularKinematicBicycle):
+def distance_to_collision(ego_veh: RectangularKinematicBicycle, obst_veh: RectangularKinematicBicycle):
     # Collect vehicle geometry data
     ego_center = ego_veh.center
     ego_width = ego_veh.width
