@@ -10,6 +10,8 @@ GitHub:
 Date:
 July 16, 2023
 """
+import math
+
 import matplotlib.patches as patch
 import matplotlib.pyplot as plt
 
@@ -75,6 +77,10 @@ class RectangularVehicle(VehicleGeometry):
     def get_patch(self, color='tab:blue', alpha=0.3):
         return patch.Rectangle(self.center, self.width, self.height, self.angle,
                                rotation_point=self.rotation_point, facecolor=color, alpha=alpha)
+
+    @property
+    def get_radius(self):
+        return math.sqrt(self.width ** 2 + self.height ** 2)
 
 
 # #################################################################################################################### #
