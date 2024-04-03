@@ -189,8 +189,8 @@ class KinematicBicycle(DTVehicleDynamics):
 
         """
         A, B = np.eye(5), np.zeros((5, 2))
-        C = np.array([[1, 0, 0, 0],
-                      [0, 1, 0, 0]])
+        C = np.array([[1, 0, 0, 0, 0],
+                      [0, 1, 0, 0, 0]])
         super().__init__(A, B, C, x0, dt, t0)
         self.Cv = np.diag([0, 0, 0, 1, 0])
 
