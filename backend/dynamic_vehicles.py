@@ -37,6 +37,15 @@ class CircularDoubleIntegrator(DoubleIntegrator, CircularVehicle):
         return super().get_patch(color, alpha)
 
 
+class CircularKinematicBicycle(KinematicBicycle, CircularVehicle):
+    def __init__(self, x0, dt, t0, lf, lr, max_steer, radius):
+        super().__init__(x0, dt, t0, lf, lr, max_steer)
+        CircularVehicle.__init__(self, self.get_pos, radius)
+
+    def get_patch(self, color='tab:blue', alpha=0.3):
+        self.center = self.get_pos
+        return super().get_patch(color, alpha)
+
 class RectangularKinematicBicycle(KinematicBicycle, RectangularVehicle):
     def __init__(self, x0, dt, t0, lf, lr, max_steer, width, height, angle, rotation_point):
         super().__init__(x0, dt, t0, lf, lr, max_steer)
@@ -86,6 +95,13 @@ def test_circular_double_integrator():
     test_model(geom_model, u)
 
 
+def test_circular_kinematic_bicycle():
+    geom_model = CircularKinematicBicycle(x0=np.array([2, 0, 0, 0, 0]), dt=0.1, t0=0, lf=0.5, lr=0.5, max_steer=np.pi/4,
+                                             radius=0.4)
+    u = np.array([1, 0.1])
+    test_model(geom_model, u)
+
+
 def test_rectangular_kinematic_bicycle():
     geom_model = RectangularKinematicBicycle(x0=np.array([2, 0, 0, 0, 0]), dt=0.1, t0=0, lf=0.5, lr=0.5, max_steer=np.pi/4,
                                              width=1.0, height=0.5, angle=0, rotation_point='center')
@@ -96,6 +112,7 @@ def test_rectangular_kinematic_bicycle():
 def main():
     test_circular_single_integrator()
     test_circular_double_integrator()
+    test_circular_kinematic_bicycle()
     test_rectangular_kinematic_bicycle()
 
 
