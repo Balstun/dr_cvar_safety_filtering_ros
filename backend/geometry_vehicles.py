@@ -80,7 +80,7 @@ class RectangularVehicle(VehicleGeometry):
 
     @property
     def get_radius(self):
-        return math.sqrt(self.width ** 2 + self.height ** 2)
+        return math.sqrt(self.width ** 2 + self.height ** 2)/2
 
 
 # #################################################################################################################### #

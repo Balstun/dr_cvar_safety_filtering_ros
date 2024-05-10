@@ -43,7 +43,7 @@ def drone_exp_setup(exp_type, metric, filter_slack):
     # General optimization problem settings
     accel_lim_x = 100
     accel_lim_y = 100
-    measurement_Ax_leq_b = {'A': np.array([np.array([1, 0]), np.array([-1, 0]), np.array([0, 1]), np.array([0, -1])]),
+    measurement_Ax_leq_b = {'A': np.array([np.array([1, 0, 0, 0, 0]), np.array([-1, 0, 0, 0, 0]), np.array([0, 1, 0, 0, 0]), np.array([0, -1, 0, 0, 0])]),
                             'b': np.array([ENV_LIM, ENV_LIM, ENV_LIM, ENV_LIM])}
     control_Ax_leq_b = {'A': np.array([np.array([1, 0]), np.array([-1, 0]), np.array([0, 1]), np.array([0, -1])]),
                         'b': np.array([accel_lim_x, accel_lim_x, accel_lim_y, accel_lim_y])}

@@ -12,5 +12,6 @@ def distance_to_collision(ego_veh: RectangularKinematicBicycle, obst_veh: Rectan
     # Calculate axial distance to collision
     distance = max(abs(ego_center[0] - obst_center[0]) - (ego_width + obst_width)/2,
                    abs(ego_center[1] - obst_center[1]) - (ego_height + obst_height)/2)
-
+    
+    print("Distance", distance)
     return distance
